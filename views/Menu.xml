@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <menuitem id="ostool_main_menu" name="Ostool"/>
+        <menuitem id="ostool_sub_menu" name="Ostool" parent="ostool_main_menu"/>
+        <menuitem id="ostool_drivers_menu" name="Chauffeurs" parent="ostool_sub_menu" action=""/>
+
+    </data>
+</odoo>
