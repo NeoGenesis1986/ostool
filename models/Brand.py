@@ -1,7 +1,9 @@
+# -*- coding: utf-8 -*-
+
 from odoo import models, fields, api
 
 
-class Make(models.Model) :
-    _name = "ostool.make"
+class Brand(models.Model) :
+    _name = "ostool.brand"
 
     name = fields.Char(string="Marque", required=True)

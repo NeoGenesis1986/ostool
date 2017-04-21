@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "ostool",
+    'name': "Ostool",
 
     'summary': """
         Gestion parc automobile.
@@ -25,6 +25,7 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
+        'views/Menu.xml',
         'views/views.xml',
         'views/templates.xml',
     ],
@@ -32,4 +33,5 @@
     'demo': [
         'demo/demo.xml',
     ],
+    'application': True
 }
