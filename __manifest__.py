@@ -25,6 +25,11 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
+        'views/Driver.xml',
+        'views/Brand.xml',
+        'views/VehiculeModel.xml',
+        'views/Owner.xml',
+        'views/Vehicule.xml',
         'views/Menu.xml',
         'views/views.xml',
         'views/templates.xml',

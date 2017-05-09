@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <record id="ostool_vehicule_model_action" model="ir.actions.act_window">
+            <field name="name">Modèles des véhicules</field>
+            <field name="res_model">ostool.vehicule_model</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Ajouter votre premier véhicule</p>
+            </field>
+        </record>
+
+        <record id='ostool_vehicule_model_search_view' model='ir.ui.view'>
+            <field name="name">vehicule_model.search</field>
+            <field name="model">ostool.vehicule_model</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="brand_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="ostool_vehicule_model_tree_view" model="ir.ui.view">
+            <field name="name">vehicule_model.tree</field>
+            <field name="model">ostool.vehicule_model</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="brand_id"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="ostool_vehicule_model_form_view" model="ir.ui.view">
+            <field name="name">vehicule_model.form</field>
+            <field name="model">ostool.vehicule_model</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <field name="logo" widget="image" class="oe_avatar" readonly="1"/>
+                        <div class="oe_title">
+                            <div>
+                                <label for="brand_id" class="oe_edit_only"/>
+                                <h2>
+                                    <field name="brand_id"/>
+                                </h2>
+                                <h1>
+                                    <field name="name" placeholder="Nom du modèle"/>
+                                </h1>
+                            </div>
+                        </div>
+                        <notebook>
+                            <page string="Détails" class="oe_read_only">
+                                <group>
+                                    <field name="create_uid"/>
+                                    <field name="create_date"/>
+                                    <field name="write_uid"/>
+                                    <field name="write_date"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="ostool_vehicule_model_kanban_view" model="ir.ui.view">
+            <field name="name">vehicule_model.kanban</field>
+            <field name="model">ostool.vehicule_model</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="name" />
+                    <field name="logo" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_vignette" style="display: flex;">
+                                <a type="open" href="#" class="oe_kanban_action">
+                                    <img t-att-src="kanban_image('ostool.vehicule_model', 'logo', record.id.value)" class="img-responsive" style="width:100px;"/>
+                                </a>
+                                <div style="margin-left: 8px;">
+                                    <h1 class="oe_partner_heading">
+                                        <a type="open">
+                                            <field name="name"/>
+                                        </a>
+                                    </h1>
+                                    <h2 class="oe_partner_heading">
+                                        <a type="open">
+                                            <field name="brand_id"/>
+                                        </a>
+                                    </h2>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+    </data>
+</odoo>

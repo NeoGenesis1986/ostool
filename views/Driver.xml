@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <record id="ostool_driver_action" model="ir.actions.act_window">
+            <field name="name">Chauffeurs</field>
+            <field name="res_model">ostool.driver</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Ajouter votre premier chauffeur</p>
+            </field>
+        </record>
+
+        <record id='ostool_driver_search_view' model='ir.ui.view'>
+            <field name="name">driver.search</field>
+            <field name="model">ostool.driver</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="phone"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="ostool_driver_tree_view" model="ir.ui.view">
+            <field name="name">driver.tree</field>
+            <field name="model">ostool.driver</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="phone"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="ostool_driver_form_view" model="ir.ui.view">
+            <field name="name">driver.form</field>
+            <field name="model">ostool.driver</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <field name="avatar" widget="image" class="oe_avatar"/>
+                        <div class="oe_title">
+                            <group nolabel="1">
+                                <h1><field name="name" placeholder="Nom du chauffeur"/></h1>
+                            </group>
+                        </div>
+                        <div>
+                            <group>
+                                <field name="phone"/>
+                                <field name="comments"/>
+                            </group>
+                        </div>
+                        <notebook>
+                            <page string="Véhicules" class="oe_read_only">
+                                <field name="vehicules_id"/>
+                            </page>
+                            <page string="Détails" class="oe_read_only">
+                                <group>
+                                    <field name="create_uid"/>
+                                    <field name="create_date"/>
+                                    <field name="write_uid"/>
+                                    <field name="write_date"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="ostool_driver_kanban_view" model="ir.ui.view">
+            <field name="name">driver.kanban</field>
+            <field name="model">ostool.driver</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="name" />
+                    <field name="phone" />
+                    <field name="avatar" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_vignette" style="display: flex;">
+                                <a type="open" href="#" class="oe_kanban_action">
+                                    <img t-att-src="kanban_image('ostool.driver', 'avatar', record.id.value)" class="img-responsive" style="width:100px;"/>
+                                </a>
+                                <div style="margin-left: 8px;">
+                                    <ul>
+                                        <li><a type="open" style="font-size: 20px;"><field name="name"/></a></li>
+                                        <li><i class="fa fa-phone"></i><![CDATA[&nbsp;&nbsp;]]><field name="phone"/></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+    </data>
+</odoo>

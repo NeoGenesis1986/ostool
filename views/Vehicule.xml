@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+
+        <record id="ostool_vehicule_action" model="ir.actions.act_window">
+            <field name="name">Véhicules</field>
+            <field name="res_model">ostool.vehicule</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Ajouter votre premier véhicule</p>
+            </field>
+        </record>
+
+        <record id='ostool_vehicule_search_view' model='ir.ui.view'>
+            <field name="name">vehicule.search</field>
+            <field name="model">ostool.vehicule</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="brand"/>
+                    <field name="vehicule_model_id"/>
+                    <field name="license_plate"/>
+                    <field name="drivers_id"/>
+                    <field name="owner_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="ostool_vehicule_tree_view" model="ir.ui.view">
+            <field name="name">vehicule.tree</field>
+            <field name="model">ostool.vehicule</field>
+            <field name="arch" type="xml">
+                <tree decoration-danger="(state == 'panne')">
+                    <field name="name"/>
+                    <field name="license_plate"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="ostool_vehicule_form_view" model="ir.ui.view">
+            <field name="name">vehicule.form</field>
+            <field name="model">ostool.vehicule</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_state" type="object" class="oe_stat_button oe_read_only" icon="fa-car">
+                                <field name="state_bool" widget="boolean_button" options='{"terminology": {
+                                    "string_true": "En Marche",
+                                    "hover_true": "En Panne",
+                                    "string_false": "En Panne",
+                                    "hover_false": "En Marche"
+                                }}'/>
+                            </button>
+                        </div>
+                        <field name="image" widget="image" class="oe_avatar" readonly="1"/>
+                        <div class="oe_title">
+                            <group col="1">
+                                <h4 style="margin-top: 0px; margin-bottom: 0px;">
+                                    <label for="owner_id" string="Propriétaire" class="oe_edit_only"/>
+                                    <field name="owner_id" nolabel="1"/>
+                                </h4>
+                                <h2 style="margin-top: 0px; margin-bottom: 0px;">
+                                    <field name="vehicule_model_id" placeholder="Modèle" nolabel="1"/>
+                                    <br/>
+                                    <field name="name" placeholder="Nom du véhicule" nolabel="1"/>
+                                </h2>
+                                <h3 style="margin-top: 0px; margin-bottom: 0px;">
+                                    <label for="license_plate" string="Matricule" class="oe_edit_only"/>
+                                    <field name="license_plate" placeholder="exemple: 123 Tunis 9876" nolabel="1"/>
+                                </h3>
+                            </group>
+                        </div>
+                        <notebook>
+                            <page string="Informations">
+                                <group col="4">
+
+                                </group>
+                            </page>
+                            <page string="Détails" class="oe_read_only">
+                                <group>
+                                    <field name="create_uid"/>
+                                    <field name="create_date"/>
+                                    <field name="write_uid"/>
+                                    <field name="write_date"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>
