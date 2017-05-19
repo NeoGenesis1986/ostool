@@ -40,6 +40,11 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="total_expenses_click" type="object" class="oe_stat_button oe_read_only" icon="fa-money" style="font-weight: bold; font-size: 16px;" readonly="1">
+                                <field name="total_expenses"/>
+                            </button>
+                        </div>
                         <field name="avatar" widget="image" class="oe_avatar"/>
                         <div class="oe_title">
                             <group nolabel="1">
@@ -55,6 +60,19 @@
                         <notebook>
                             <page string="Véhicules" class="oe_read_only">
                                 <field name="vehicules_id"/>
+                            </page>
+                            <page string="Dépenses">
+                                <group>
+                                    <field name="expenses_id" nolabel="1">
+                                        <tree editable="bottom">
+                                            <field name="name"/>
+                                            <field name="cost" sum="1"/>
+                                            <field name="vehicule_id"/>
+                                            <field name="expense_date"/>
+                                            <field name="description"/>
+                                        </tree>
+                                    </field>
+                                </group>
                             </page>
                             <page string="Détails" class="oe_read_only">
                                 <group>

@@ -41,16 +41,27 @@
                         <field name="logo" widget="image" class="oe_avatar"/>
                         <div class="oe_title">
                             <group nolabel="1">
-                                <h1>
+                                <h1 style="margin-top: 0px;">
                                     <field name="name" placeholder="Nom du propriétaire"/>
                                 </h1>
                             </group>
                         </div>
                         <notebook>
-                            <page string="Modèles" class="oe_read_only">
+                            <page string="Véhicules">
                                 <field name="vehicules_id">
                                     <tree>
                                         <field name="name"/>
+                                        <field name="drivers_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Carnets Carburant">
+                                <field name="fuel_ticket_books_id" context="{'default_owner_id':active_id}">
+                                    <tree>
+                                        <field name="str_name"/>
+                                        <field name="tickets_count"/>
+                                        <field name="available_tickets_count"/>
+                                        <field name="validity"/>
                                     </tree>
                                 </field>
                             </page>
@@ -82,7 +93,7 @@
                                     <img t-att-src="kanban_image('ostool.owner', 'logo', record.id.value)" class="img-responsive" style="width:100px;"/>
                                 </a>
                                 <div style="margin-left: 8px;">
-                                    <h2 class="oe_partner_heading">
+                                    <h2 class="oe_partner_heading" style="margin-top: 0px;">
                                         <a type="open">
                                             <field name="name"/>
                                         </a>

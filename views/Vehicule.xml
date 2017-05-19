@@ -35,6 +35,7 @@
                 <tree decoration-danger="(state == 'panne')">
                     <field name="name"/>
                     <field name="license_plate"/>
+                    <field name="last_odometer_reading"/>
                     <field name="state"/>
                 </tree>
             </field>
@@ -47,7 +48,13 @@
                 <form>
                     <sheet>
                         <div class="oe_button_box" name="button_box">
-                            <button name="toggle_state" type="object" class="oe_stat_button oe_read_only" icon="fa-car">
+                            <button type="object" name="last_odometer_reading_click" class="oe_stat_button oe_read_only" icon="fa-tachometer" style="font-weight: bold; font-size: 16px;">
+                                <field name="last_odometer_reading"/>
+                            </button>
+                            <button type="object" name="total_expenses_click" class="oe_stat_button oe_read_only" icon="fa-money" style="font-weight: bold; font-size: 16px;">
+                                <field name="total_expenses"/>
+                            </button>
+                            <button name="toggle_state" type="object" class="oe_stat_button oe_read_only" icon="fa-car" style="font-weight: bold; font-size: 16px;">
                                 <field name="state_bool" widget="boolean_button" options='{"terminology": {
                                     "string_true": "En Marche",
                                     "hover_true": "En Panne",
@@ -66,7 +73,7 @@
                                 <h2 style="margin-top: 0px; margin-bottom: 0px;">
                                     <field name="vehicule_model_id" placeholder="Modèle" nolabel="1"/>
                                     <br/>
-                                    <field name="name" placeholder="Nom du véhicule" nolabel="1"/>
+                                    <field name="name" placeholder="Nom du véhicule" nolabel="1" decoration-danger="(state == 'panne')"/>
                                 </h2>
                                 <h3 style="margin-top: 0px; margin-bottom: 0px;">
                                     <label for="license_plate" string="Matricule" class="oe_edit_only"/>
@@ -77,7 +84,46 @@
                         <notebook>
                             <page string="Informations">
                                 <group col="4">
-
+                                    <!--<field name="brand" readonly="1" class="oe_read_only"/>-->
+                                    <!--<field name="vehicule_model_id" readonly="1" class="oe_read_only"/>-->
+                                    <field name="first_release_date"/>
+                                    <field name="purchase_date"/>
+                                    <field name="color"/>
+                                    <field name="doors" widget="integer"/>
+                                    <field name="seats"/>
+                                    <field name="engine_volume"/>
+                                    <field name="power"/>
+                                    <field name="fiscal_power"/>
+                                    <field name="energy"/>
+                                    <field name="transmission"/>
+                                    <field name="gearbox_speeds"/>
+                                    <newline/>
+                                    <field name="drivers_id" colspan="4" widget="many2many_tags"/>
+                                    <newline/>
+                                    <field name="description" colspan="4"/>
+                                </group>
+                            </page>
+                            <page string="Lectures">
+                                <group>
+                                    <field name="odometers_id">
+                                        <tree editable="top">
+                                            <field name="reading_date"/>
+                                            <field name="reading"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Dépenses">
+                                <group>
+                                    <field name="expenses_id" nolabel="1">
+                                        <tree editable="bottom">
+                                            <field name="name" style="width: 200px;"/>
+                                            <field name="cost" sum="1"/>
+                                            <field name="driver_id"/>
+                                            <field name="expense_date"/>
+                                            <field name="description"/>
+                                        </tree>
+                                    </field>
                                 </group>
                             </page>
                             <page string="Détails" class="oe_read_only">

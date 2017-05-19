@@ -30,6 +30,7 @@
         'views/VehiculeModel.xml',
         'views/Owner.xml',
         'views/Vehicule.xml',
+        'views/FuelTicketsBook.xml',
         'views/Menu.xml',
         'views/views.xml',
         'views/templates.xml',

@@ -9,9 +9,27 @@ class Driver(models.Model):
 
     name = fields.Char(string="Nom", required=True)
     avatar = fields.Binary(string="Photo")
-    phone = fields.Char(string="Telephone")
+    phone = fields.Char(string="Télephone")
     comments = fields.Text(string="Commentaires")
     vehicules_id = fields.Many2many(
         string="Véhicules",
         comodel_name="ostool.vehicule"
     )
+    expenses_id = fields.One2many(
+        comodel_name="ostool.expense",
+        inverse_name="driver_id",
+        string="Dépenses"
+    )
+    total_expenses = fields.Float(String="Total Dépenses", digits=(15, 3), compute="_total_expenses")
+
+    @api.depends("expenses_id")
+    def _total_expenses(self):
+        for v in self:
+            total = 0.0
+            for expense in v.expenses_id:
+                total += expense.cost
+            v.total_expenses = total
+
+    @api.one
+    def total_expenses_click(self):
+        return True

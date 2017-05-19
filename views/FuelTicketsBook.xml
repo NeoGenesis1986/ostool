@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <record id="ostool_fuel_tickets_book_action" model="ir.actions.act_window">
+            <field name="name">Carnets de Bons de Carburant</field>
+            <field name="res_model">ostool.fuel_tickets_book</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Ajouter votre premier carnet de bons de carburant</p>
+            </field>
+        </record>
+
+        <record id="ostool_fuel_tickets_book_form_view" model="ir.ui.view">
+            <field name="name">fuel_tickets_book.form</field>
+            <field name="model">ostool.fuel_tickets_book</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <label for="owner_id" string="Propriétaire" colspan="1" style="margin-top: 10px;"/>
+                            <h1 style="margin-top: 0px;"><field name="owner_id"/></h1>
+                        </group>
+                        <group col="4">
+                            <field name="name"/>
+                            <field name="first_ticket_reference"/>
+                            <field name="tickets_count"/>
+                            <field name="ticket_value"/>
+                            <field name="validity"/>
+                        </group>
+                        <notebook>
+                            <page string="Bons de carburants" class="oe_read_only">
+                                <group>
+                                    <field name="fuel_tickets_id" nolabel="1">
+                                        <tree decoration-danger="(state != 'available')" decoration-success="(state == 'available')">
+                                            <field name="display_name"/>
+                                            <field name="value"/>
+                                            <field name="validity"/>
+                                            <field name="state"/>
+                                            <field name="vehicule_id"/>
+                                            <field name="driver_id"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Détails" class="oe_read_only">
+                                <group>
+                                    <field name="create_uid"/>
+                                    <field name="create_date"/>
+                                    <field name="write_uid"/>
+                                    <field name="write_date"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>
