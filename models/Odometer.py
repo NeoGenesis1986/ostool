@@ -10,7 +10,7 @@ class Odometer(models.Model):
     _order = "reading_date desc"
 
     reading = fields.Float(string="Lecture", digits=(10, 0), required=True)
-    reading_date = fields.Date(string="Date", required=True, default=datetime.today())
+    reading_date = fields.Date(string="Date", required=True, default=fields.Date.today())
     vehicule_id = fields.Many2one(
         string="Véhicule",
         index=True,

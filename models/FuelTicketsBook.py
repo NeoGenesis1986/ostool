@@ -7,6 +7,7 @@ from odoo.exceptions import ValidationError
 class FuelTicketsBook(models.Model):
     _name = "ostool.fuel_tickets_book"
     _order = "name asc"
+    _rec_name = "str_name"
 
     name = fields.Float(string="Réference Carnet", digits=(15, 0), required=True)
     validity = fields.Date(string="Validité", required=True)
@@ -60,7 +61,7 @@ class FuelTicketsBook(models.Model):
         for ticket_book in self:
             ticket_book.str_name = str(long(ticket_book.name)).rjust(12, '0')
 
-    @api.multi
+    @api.model
     def create(self, vals):
         rec = super(FuelTicketsBook, self).create(vals)
         for i in range(0, vals.get('tickets_count')):
@@ -69,4 +70,4 @@ class FuelTicketsBook(models.Model):
                 'value': vals.get('ticket_value'),
                 'fuel_ticket_book_id': rec.id
             })
-        return True
+        return rec

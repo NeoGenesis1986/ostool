@@ -4,11 +4,12 @@
 
         <menuitem id="ostool_main_menu" name="Ostool"/>
         <menuitem id="ostool_side_menu" name="Ostool" parent="ostool_main_menu"/>
-        <menuitem id="ostool_drivers_menu" name="Chauffeurs" parent="ostool_side_menu" action="ostool_driver_action" sequence="10"/>
-        <menuitem id="ostool_vehicules_menu" name="Véhicules" parent="ostool_side_menu" action="ostool_vehicule_action" sequence="11"/>
+        <menuitem id="ostool_vehicules_menu" name="Véhicules" parent="ostool_side_menu" action="ostool_vehicule_action" sequence="10"/>
+        <menuitem id="ostool_drivers_menu" name="Chauffeurs" parent="ostool_side_menu" action="ostool_driver_action" sequence="11"/>
         <menuitem id="ostool_fuel_ticket_book_menu" name="Bons de Carburants" parent="ostool_side_menu" action="ostool_fuel_tickets_book_action" sequence="12"/>
         <menuitem id="ostool_config_menu" name="Configuration" parent="ostool_side_menu" sequence="90"/>
-        <menuitem id="ostool_owner_menu" name="Propriétaires" parent="ostool_config_menu" action="ostool_owner_action" sequence="91"/>
+        <menuitem id="ostool_config_submenu" name="Configuration" parent="ostool_config_menu" action="ostool_config_action" sequence="91"/>
+        <menuitem id="ostool_owner_menu" name="Propriétaires" parent="ostool_config_menu" action="ostool_owner_action" sequence="92"/>
         <menuitem id="ostool_brands_menu" name="Marques" parent="ostool_config_menu" action="ostool_brand_action" sequence="93"/>
         <menuitem id="ostool_vehicule_models_menu" name="Modèles" parent="ostool_config_menu" action="ostool_vehicule_model_action" sequence="94"/>
 

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <record id="ostool_config_action" model="ir.actions.act_window">
+            <field name="name">Configuration</field>
+            <field name="res_model">ostool.config</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Configuration du module Ostool</p>
+            </field>
+        </record>
+
+
+        <record id="ostool_config_tree_view" model="ir.ui.view">
+            <field name="name">config.tree</field>
+            <field name="model">ostool.config</field>
+            <field name="arch" type="xml">
+                <tree editable="top" create="false" delete="false">
+                    <field name="responsible_id"/>
+                    <field name="alert_period"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--<record id="ostool_config_form_view" model="ir.ui.view">-->
+            <!--<field name="name">config.form</field>-->
+            <!--<field name="model">ostool.config</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<form create="false" delete="false">-->
+                    <!--<sheet>-->
+                        <!--<group>-->
+                            <!--<field name="responsible_id"/>-->
+                        <!--</group>-->
+                    <!--</sheet>-->
+                <!--</form>-->
+            <!--</field>-->
+        <!--</record>-->
+
+    </data>
+    <data noupdate="1">
+
+        <record id="ostool_config_default_responsible_id" model="ostool.config">
+            <field name="responsible_id">1</field>
+            <field name="alert_period">30</field>
+        </record>
+
+    </data>
+</odoo>

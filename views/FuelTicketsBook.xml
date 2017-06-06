@@ -12,6 +12,20 @@
             </field>
         </record>
 
+        <record id="ostool_fuel_tickets_book_tree_view" model="ir.ui.view">
+            <field name="name">fuel_tickets_book.tree</field>
+            <field name="model">ostool.fuel_tickets_book</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="owner_id"/>
+                    <field name="str_name"/>
+                    <field name="tickets_count"/>
+                    <field name="available_tickets_count"/>
+                    <field name="validity"/>
+                </tree>
+            </field>
+        </record>
+
         <record id="ostool_fuel_tickets_book_form_view" model="ir.ui.view">
             <field name="name">fuel_tickets_book.form</field>
             <field name="model">ostool.fuel_tickets_book</field>
@@ -33,7 +47,7 @@
                             <page string="Bons de carburants" class="oe_read_only">
                                 <group>
                                     <field name="fuel_tickets_id" nolabel="1">
-                                        <tree decoration-danger="(state != 'available')" decoration-success="(state == 'available')">
+                                        <tree decoration-danger="(state != 'available')">
                                             <field name="display_name"/>
                                             <field name="value"/>
                                             <field name="validity"/>
