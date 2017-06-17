@@ -1,42 +1,40 @@
 <?xml version="1.0" encoding='UTF-8'?>
 <odoo>
 
-    <data noupdate="1">
+    <data>
 
+        <record model="ir.cron" id="ostool_vehicule_insurance_cron">
+            <field name="name">Check insurances expiration date</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="model" eval="'ostool.vehicule'"/>
+            <field name="function" eval="'_cron_check_insurance_expiration_date'"/>
+            <field name="args" eval="'()'" />
+        </record>
 
-        <!--<record model="ir.cron" id="ostool_vehicule_insurance_cron">-->
-            <!--<field name="name">Check insurances expiration date</field>-->
-            <!--<field name="interval_number">1</field>-->
-            <!--<field name="interval_type">days</field>-->
-            <!--<field name="numbercall">-1</field>-->
-            <!--<field name="doall" eval="False"/>-->
-            <!--<field name="model" eval="'ostool.vehicule'"/>-->
-            <!--<field name="function" eval="'_cron_check_insurance_expiration_date'"/>-->
-            <!--<field name="args" eval="'()'" />-->
-        <!--</record>-->
+        <record model="ir.cron" id="ostool_vehicule_tax_cron">
+            <field name="name">Check taxes expiration date</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="model" eval="'ostool.vehicule'"/>
+            <field name="function" eval="'_cron_check_tax_expiration_date'"/>
+            <field name="args" eval="'()'" />
+        </record>
 
-        <!--<record model="ir.cron" id="ostool_vehicule_tax_cron">-->
-            <!--<field name="name">Check taxes expiration date</field>-->
-            <!--<field name="interval_number">1</field>-->
-            <!--<field name="interval_type">days</field>-->
-            <!--<field name="numbercall">-1</field>-->
-            <!--<field name="doall" eval="False"/>-->
-            <!--<field name="model" eval="'ostool.vehicule'"/>-->
-            <!--<field name="function" eval="'_cron_check_tax_expiration_date'"/>-->
-            <!--<field name="args" eval="'()'" />-->
-        <!--</record>-->
-
-        <!--<record model="ir.cron" id="ostool_vehicule_visit_cron">-->
-            <!--<field name="name">Check visit expiration date</field>-->
-            <!--<field name="interval_number">1</field>-->
-            <!--<field name="interval_type">days</field>-->
-            <!--<field name="numbercall">-1</field>-->
-            <!--<field name="doall" eval="False"/>-->
-            <!--<field name="model" eval="'ostool.vehicule'"/>-->
-            <!--<field name="function" eval="'_cron_check_visit_expiration_date'"/>-->
-            <!--<field name="args" eval="'()'" />-->
-        <!--</record>-->
-
+        <record model="ir.cron" id="ostool_vehicule_visit_cron">
+            <field name="name">Check visit expiration date</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="model" eval="'ostool.vehicule'"/>
+            <field name="function" eval="'_cron_check_visit_expiration_date'"/>
+            <field name="args" eval="'()'" />
+        </record>
 
     </data>
 

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <record id="ostool_alert_action" model="ir.actions.act_window">
+            <field name="name">Alertes</field>
+            <field name="res_model">ostool.alert</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p>Aucune alerte</p>
+            </field>
+        </record>
+
+        <record id='ostool_alert_search_view' model='ir.ui.view'>
+            <field name="name">alert.search</field>
+            <field name="model">ostool.alert</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="about"/>
+                    <field name="alert_level"/>
+                    <field name="vehicule_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="ostool_alert_tree_view" model="ir.ui.view">
+            <field name="name">alert.tree</field>
+            <field name="model">ostool.alert</field>
+            <field name="arch" type="xml">
+                <tree string="Alertes" create="false" edit="false" delete="false" decoration-info="(alert_level == 'info')" decoration-danger="(alert_level == 'alert')" decoration-warning="(alert_level == 'warning')">
+                    <field name="alert_date"/>
+                    <field name="alert_level"/>
+                    <field name="about"/>
+                    <field name="name"/>
+                    <field name="vehicule_id"/>
+                    <button string="OK" type="object" name="unlink" icon="fa-check"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="ostool_alert_form_view" model="ir.ui.view">
+            <field name="name">alert.form</field>
+            <field name="model">ostool.alert</field>
+            <field name="arch" type="xml">
+                <form create="false" edit="false" delete="false">
+                    <sheet>
+                        <group>
+                            <field name="alert_date"/>
+                            <field name="alert_level"/>
+                            <field name="about"/>
+                            <field name="name"/>
+                            <field name="description"/>
+                            <field name="vehicule_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

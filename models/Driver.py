@@ -20,6 +20,11 @@ class Driver(models.Model):
         inverse_name="driver_id",
         string="Dépenses"
     )
+    fuel_tickets_id = fields.One2many(
+        comodel_name="ostool.fuel_ticket",
+        inverse_name="driver_id",
+        string="Bons de carburant"
+    )
     total_expenses = fields.Float(String="Total Dépenses", digits=(15, 3), compute="_total_expenses")
 
     @api.depends("expenses_id")
@@ -29,7 +34,3 @@ class Driver(models.Model):
             for expense in v.expenses_id:
                 total += expense.cost
             v.total_expenses = total
-
-    @api.one
-    def total_expenses_click(self):
-        return True

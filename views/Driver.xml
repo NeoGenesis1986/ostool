@@ -41,7 +41,7 @@
                 <form>
                     <sheet>
                         <div class="oe_button_box" name="button_box">
-                            <button name="total_expenses_click" type="object" class="oe_stat_button oe_read_only" icon="fa-money" style="font-weight: bold; font-size: 16px;" readonly="1">
+                            <button special="cancel" class="oe_stat_button oe_read_only" icon="fa-money" style="font-weight: bold; font-size: 16px;" readonly="1">
                                 <field name="total_expenses"/>
                             </button>
                         </div>
@@ -60,6 +60,17 @@
                         <notebook>
                             <page string="Véhicules" class="oe_read_only">
                                 <field name="vehicules_id"/>
+                            </page>
+                            <page string="Consommation">
+                                <group>
+                                    <field name="fuel_tickets_id" nolabel="1">
+                                        <tree create="false" edit="false" delete="false">
+                                            <field name="display_name"/>
+                                            <field name="value" sum="1"/>
+                                            <field name="vehicule_id"/>
+                                        </tree>
+                                    </field>
+                                </group>
                             </page>
                             <page string="Dépenses">
                                 <group>

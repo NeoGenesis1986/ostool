@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<odoo>
+
+    <data>
+
+        <record id="ostool_transient_fuel_ticket_form_view" model="ir.ui.view">
+            <field name="name">transient_fuel_ticket.form</field>
+            <field name="model">ostool.transient_fuel_ticket</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="vehicule_id"/>
+                        <field name="driver_id"/>
+                        <field name="fuel_ticket_id" widget="many2many_checkboxes"/>
+                    </group>
+                    <footer>
+                        <button type="object" name="affect_fuel_ticket" string="Affecter" class="btn-primary"/>
+                        <button string="Annuler" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="ostool_transient_fuel_ticket_action" model="ir.actions.act_window">
+            <field name="name">Bons de Carburant</field>
+            <field name="res_model">ostool.transient_fuel_ticket</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="ostool_transient_fuel_ticket_form_view"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+
+</odoo>

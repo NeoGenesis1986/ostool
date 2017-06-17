@@ -46,12 +46,15 @@
             <field name="model">ostool.vehicule</field>
             <field name="arch" type="xml">
                 <form>
+                    <header>
+                        <button type="action" name="%(ostool.ostool_transient_fuel_ticket_action)d" class="oe_highlight oe_read_only" string="Affecter bons de carburant" context="{'default_vehicule_id':active_id}"/>
+                    </header>
                     <sheet>
                         <div class="oe_button_box" name="button_box">
-                            <button type="object" name="last_odometer_reading_click" class="oe_stat_button oe_read_only" icon="fa-tachometer" style="font-weight: bold; font-size: 16px;">
+                            <button special="cancel" class="oe_stat_button oe_read_only" icon="fa-tachometer" style="font-weight: bold; font-size: 16px;">
                                 <field name="last_odometer_reading"/>
                             </button>
-                            <button type="object" name="total_expenses_click" class="oe_stat_button oe_read_only" icon="fa-money" style="font-weight: bold; font-size: 16px;">
+                            <button speical="cancel" class="oe_stat_button oe_read_only" icon="fa-money" style="font-weight: bold; font-size: 16px;">
                                 <field name="total_expenses"/>
                             </button>
                             <button name="toggle_state" type="object" class="oe_stat_button oe_read_only" icon="fa-car" style="font-weight: bold; font-size: 16px;">
@@ -113,11 +116,22 @@
                                     </field>
                                 </group>
                             </page>
+                            <page string="Consommation">
+                                <group>
+                                    <field name="fuel_tickets_id" nolabel="1">
+                                        <tree create="false" edit="false" delete="false">
+                                            <field name="display_name"/>
+                                            <field name="value" sum="1"/>
+                                            <field name="driver_id"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
                             <page string="Dépenses">
                                 <group>
                                     <field name="expenses_id" nolabel="1">
                                         <tree editable="bottom">
-                                            <field name="name" style="width: 200px;"/>
+                                            <field name="name"/>
                                             <field name="cost" sum="1"/>
                                             <field name="driver_id"/>
                                             <field name="expense_date"/>

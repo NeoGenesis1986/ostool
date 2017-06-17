@@ -20,11 +20,12 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'mail'],
+    'depends': ['base', 'mail', 'calendar'],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
+        'security/Alert.xml',
         'security/Brand.xml',
         'security/Config.xml',
         'security/Driver.xml',
@@ -38,10 +39,12 @@
         'security/Vehicule.xml',
         'security/VehiculeModel.xml',
         'security/Visit.xml',
+        'views/Alert.xml',
         'views/Driver.xml',
         'views/Brand.xml',
         'views/VehiculeModel.xml',
         'views/Owner.xml',
+        'views/FuelTicket.xml',
         'views/Vehicule.xml',
         'crons/Vehicule.xml',
         'views/FuelTicketsBook.xml',
